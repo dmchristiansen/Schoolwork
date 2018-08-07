@@ -1,0 +1,53 @@
+10
+Indiana Jones
+A thrilling roller coaster adventure!
+2
+7
+9
+Space Mountain
+A terrifying flight through the void.
+1
+4
+It's a Small World
+Educational fun for the whole family.
+1
+5
+Haunted Mansion
+Not for the faint of heart.
+2
+8
+7
+Matterhorn
+A journey to the top of the world.
+3
+6
+5
+1
+Mad Tea Party
+Change places!
+3
+6
+4
+2
+Mr. Toad's Wild Ride
+A classic tale.
+3
+9
+5
+4
+Pirates of the Carribean
+Yo ho, a pirate's life for me!
+2
+3
+0
+Splash Mountain
+Hold on to your seat!
+2
+3
+9
+Big Thunder Ranch
+Hosted by Brawny(r)
+3
+8
+0
+6

@@ -1,0 +1,76 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/Daniel/Desktop/School/PSU/ECE 171/Project 1
+vBrailleDisplay
+!s110 1415841716
+!i10b 1
+!s100 8`URm=08J]BQ6W3[EA_@C2
+Ib`U;kZY?d:njH:CI;AnF?1
+Z1 V`JN@9S9cnhjKRR_L]QIcM3
+R0
+w1415841712
+Z2 8C:/Users/Daniel/Desktop/School/PSU/ECE 171/Project 1/BrailleStructural.v
+Z3 FC:/Users/Daniel/Desktop/School/PSU/ECE 171/Project 1/BrailleStructural.v
+L0 1
+Z4 OP;L;10.3d;59
+r1
+!s85 0
+31
+!s108 1415841716.499000
+!s107 C:/Users/Daniel/Desktop/School/PSU/ECE 171/Project 1/BrailleStructural.v|
+Z5 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Daniel/Desktop/School/PSU/ECE 171/Project 1/BrailleStructural.v|
+!s101 -O0
+!i113 1
+Z6 o-work work -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF -L infact -O0
+n@braille@display
+vBrailleStructural
+!s110 1415603132
+!i10b 1
+!s100 26QY=kNXjh>;QNXJY_iUd2
+IDJ9YPFlCQf[]^ZnN;342]1
+R1
+R0
+w1415603128
+R2
+R3
+L0 1
+R4
+r1
+!s85 0
+31
+!s108 1415603132.775000
+!s107 C:/Users/Daniel/Desktop/School/PSU/ECE 171/Project 1/BrailleStructural.v|
+R5
+!s101 -O0
+!i113 1
+R6
+n@braille@structural
+vDisplayTest
+!s110 1415841113
+!i10b 1
+!s100 Y52T3M>5;njZ6TlY:AL>d1
+Ig`fK9TRjT`:l:An3?Z8lO3
+R1
+R0
+w1415840920
+8C:/Users/Daniel/Desktop/School/PSU/ECE 171/Project 1/BrailleTest.v
+FC:/Users/Daniel/Desktop/School/PSU/ECE 171/Project 1/BrailleTest.v
+L0 1
+R4
+r1
+!s85 0
+31
+!s108 1415841113.119000
+!s107 C:/Users/Daniel/Desktop/School/PSU/ECE 171/Project 1/BrailleTest.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Daniel/Desktop/School/PSU/ECE 171/Project 1/BrailleTest.v|
+!s101 -O0
+!i113 1
+R6
+n@display@test

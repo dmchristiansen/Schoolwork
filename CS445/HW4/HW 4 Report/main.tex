@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+
+\title{CS 445 \\ HW 4 - Naive Bayes Classifier}
+\author{Daniel Christiansen}
+\date{02/019/2017}
+
+\begin{document}
+
+\maketitle
+
+\clearpage
+
+\begin{flushleft}
+The task for this assignment was to implement a naive bayes classifier.  It was fairly straightforward to do, though there were some unexpected issues.  The main steps of the program are to split the data provided into equally sized train and test set (done with sklearn), to calculate the class probabilities, calculate the mean and standard deviation of each feature with respect to class (using pandas mean and std functions),  and then to iterate over the test set, calculating the argmax of the example.  For the calculation of the argmax function, I found it helpful to use the mpmath library, as I was having issues with underflow even in the pdf function.  Using mpmath, I was able to do floating point calculations with arbitrary precision, preventing underflow.
+\end{flushleft}
+
+\begin{table}[h!]
+    \begin{center}
+        \centerline\textbf{{Confusion matrix}}
+        \begin{tabular}{| c | c |}
+            \hline
+            1025 & 382 \\ 
+            \hline
+            48 & 846 \\  
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\begin{flushleft}
+The accuracy of this test was $0.813$, the precision was $0.688$, and the recall was $0.946$.  The accuracy isn't as good as the SVM from homework 3 ($81.3\%$ vs $91.7\%$).  This is probably due to several things.  A lot of the features don't seem to actually be independent, such as the frequency of '\$' and the frequency of 'money', or the total number of capital letters vs the longest run of capital letters.  It still does pretty well for a fairly simple model.  
+\end{flushleft}
+
+\end{document}

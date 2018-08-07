@@ -1,0 +1,600 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplotstable}
+\usepackage{pgfplots}
+\usepackage{filecontents}
+\pagestyle{empty}
+
+
+\begin{filecontents*}{hidden_20.csv}
+epoch,	training set,	testing set
+0,	0.915,	0.9152,
+1,	0.92,	0.9161,
+2,	0.9264,	0.9205,
+3,	0.9307,	0.9233,
+4,	0.9336,	0.926,
+5,	0.9379,	0.9275,
+6,	0.9398,	0.9313,
+7,	0.94,	0.9312,
+8,	0.9369,	0.9276,
+9,	0.9399,	0.9299,
+10,	0.9419,	0.9312,
+11,	0.9418,	0.9305,
+12,	0.9404,	0.9284,
+13,	0.9408,	0.9305,
+14,	0.9429,	0.9309,
+15,	0.9448,	0.9318,
+16,	0.9456,	0.9347,
+17,	0.9447,	0.9344,
+18,	0.9453,	0.9323,
+19,	0.9456,	0.933,
+20,	0.9459,	0.9346,
+21,	0.946,	0.9322,
+22,	0.9456,	0.9322,
+23,	0.9468,	0.9327,
+24,	0.9474,	0.9331,
+25,	0.9487,	0.9339,
+26,	0.9477,	0.9321,
+27,	0.9479,	0.9322,
+28,	0.9484,	0.933,
+29,	0.9503,	0.9349,
+30,	0.9503,	0.9358,
+31,	0.9503,	0.9353,
+32,	0.9489,	0.9337,
+33,	0.9506,	0.9359,
+34,	0.9499,	0.9348,
+35,	0.9502,	0.9354,
+36,	0.9504,	0.9357,
+37,	0.9498,	0.9339,
+38,	0.9507,	0.9349,
+39,	0.9494,	0.9335,
+40,	0.9507,	0.934,
+41,	0.9503,	0.9341,
+42,	0.9505,	0.934,
+43,	0.95,	0.9354,
+44,	0.9513,	0.9351,
+45,	0.949,	0.9325,
+46,	0.9517,	0.9354,
+47,	0.9512,	0.9352,
+48,	0.95,	0.9357,
+49,	0.9508,	0.9351,
+\end{filecontents*}
+
+\begin{filecontents*}{hidden_50.csv}
+epoch,	training set,	testing set
+0,	0.9455,	0.9423
+1,	0.9561,	0.9515
+2,	0.9621,	0.9568
+3,	0.965,	0.9565
+4,	0.9693,	0.9603
+5,	0.9708,	0.9612
+6,	0.9712,	0.9587
+7,	0.9711,	0.9587
+8,	0.9739,	0.9615
+9,	0.9737,	0.9594
+10,	0.9741,	0.9583
+11,	0.9749,	0.9601
+12,	0.975,	0.959
+13,	0.9753,	0.9597
+14,	0.976,	0.96
+15,	0.976,	0.9592
+16,	0.9768,	0.9589
+17,	0.9775,	0.9588
+18,	0.9777,	0.9593
+19,	0.978,	0.9585
+20,	0.9783,	0.9587
+21,	0.9787,	0.9595
+22,	0.979,	0.9592
+23,	0.9782,	0.9591
+24,	0.9789,	0.9586
+25,	0.9793,	0.959
+26,	0.9795,	0.9586
+27,	0.9794,	0.959
+28,	0.9795,	0.9586
+29,	0.9803,	0.959
+30,	0.9797,	0.9594
+31,	0.9806,	0.9586
+32,	0.9801,	0.9591
+33,	0.9811,	0.9592
+34,	0.9807,	0.9587
+35,	0.9816,	0.9598
+36,	0.9808,	0.9583
+37,	0.9819,	0.9587
+38,	0.9818,	0.9583
+39,	0.9815,	0.9592
+40,	0.9822,	0.9593
+41,	0.9817,	0.9593
+42,	0.9823,	0.9582
+43,	0.9819,	0.9593
+44,	0.9824,	0.9593
+45,	0.982,	0.9587
+46,	0.9823,	0.9587
+47,	0.9823,	0.9582
+48,	0.9827,	0.9581
+49,	0.9825,	0.9589
+\end{filecontents*}
+
+\begin{filecontents*}{hidden_100.csv}
+epoch,	training set,	testing set
+0,	0.9517,	0.949
+1,	0.9657,	0.9582
+2,	0.9723,	0.9631
+3,	0.9761,	0.9661
+4,	0.9787,	0.966
+5,	0.9806,	0.9671
+6,	0.9819,	0.9669
+7,	0.983,	0.9672
+8,	0.9842,	0.9674
+9,	0.9856,	0.9682
+10,	0.9865,	0.9682
+11,	0.9871,	0.9685
+12,	0.9879,	0.9684
+13,	0.9886,	0.9684
+14,	0.9889,	0.9695
+15,	0.9892,	0.9696
+16,	0.9899,	0.9697
+17,	0.9901,	0.9695
+18,	0.9902,	0.9696
+19,	0.9906,	0.9683
+20,	0.991,	0.9678
+21,	0.9915,	0.9673
+22,	0.9917,	0.9684
+23,	0.9915,	0.9677
+24,	0.992,	0.9679
+25,	0.9925,	0.9675
+26,	0.9925,	0.9666
+27,	0.9926,	0.9666
+28,	0.9929,	0.9656
+29,	0.993,	0.9664
+30,	0.993,	0.9652
+31,	0.9933,	0.9653
+32,	0.9934,	0.9652
+33,	0.9936,	0.9658
+34,	0.9937,	0.965
+35,	0.9937,	0.9656
+36,	0.994,	0.9645
+37,	0.9941,	0.9649
+38,	0.9941,	0.9649
+39,	0.9942,	0.9643
+40,	0.9944,	0.9641
+41,	0.9942,	0.9641
+42,	0.9944,	0.9634
+43,	0.9944,	0.963
+44,	0.9947,	0.9644
+45,	0.9944,	0.9634
+46,	0.9946,	0.9644
+47,	0.9947,	0.9635
+48,	0.9949,	0.9635
+49,	0.995,	0.9636
+\end{filecontents*}
+
+\begin{filecontents*}{alpha_0.csv}
+epoch,	training set,	testing set
+0,	0.931,	0.9322
+1,	0.9546,	0.9534
+2,	0.9656,	0.9612
+3,	0.9712,	0.966
+4,	0.9756,	0.9673
+5,	0.9782,	0.9691
+6,	0.9805,	0.9703
+7,	0.982,	0.9711
+8,	0.9833,	0.9718
+9,	0.9844,	0.9731
+10,	0.9851,	0.9736
+11,	0.9859,	0.9742
+12,	0.9866,	0.9746
+13,	0.9874,	0.975
+14,	0.9879,	0.975
+15,	0.9885,	0.9753
+16,	0.9891,	0.9757
+17,	0.9895,	0.9761
+18,	0.9899,	0.9761
+19,	0.9902,	0.9763
+20,	0.9906,	0.9768
+21,	0.9909,	0.9768
+22,	0.9913,	0.9769
+23,	0.9916,	0.9767
+24,	0.9919,	0.977
+25,	0.992,	0.9769
+26,	0.9923,	0.9771
+27,	0.9925,	0.9771
+28,	0.9926,	0.9773
+29,	0.9928,	0.9771
+30,	0.9929,	0.9771
+31,	0.9931,	0.9771
+32,	0.9932,	0.9773
+33,	0.9934,	0.9774
+34,	0.9936,	0.9774
+35,	0.9937,	0.9773
+36,	0.9938,	0.9772
+37,	0.9939,	0.9771
+38,	0.994,	0.9768
+39,	0.9941,	0.9766
+40,	0.9941,	0.9767
+41,	0.9942,	0.9766
+42,	0.9943,	0.9765
+43,	0.9944,	0.9762
+44,	0.9944,	0.9763
+45,	0.9945,	0.9767
+46,	0.9946,	0.9771
+47,	0.9947,	0.9772
+48,	0.9947,	0.9772
+49,	0.9948,	0.9772
+\end{filecontents*}
+
+\begin{filecontents*}{alpha_025.csv}
+epoch,	training set,	testing set
+0,	0.9377,	0.9382
+1,	0.9603,	0.9582
+2,	0.9693,	0.965
+3,	0.9743,	0.9694
+4,	0.9776,	0.9717
+5,	0.9801,	0.973
+6,	0.9821,	0.9733
+7,	0.9835,	0.9741
+8,	0.9848,	0.9744
+9,	0.9856,	0.9749
+10,	0.9865,	0.9747
+11,	0.9873,	0.9749
+12,	0.988,	0.9751
+13,	0.9888,	0.9751
+14,	0.9894,	0.9754
+15,	0.9899,	0.9757
+16,	0.9903,	0.976
+17,	0.9908,	0.9764
+18,	0.991,	0.9764
+19,	0.9914,	0.9765
+20,	0.9917,	0.9763
+21,	0.9919,	0.9762
+22,	0.9922,	0.9764
+23,	0.9925,	0.9764
+24,	0.9927,	0.9768
+25,	0.993,	0.9766
+26,	0.9932,	0.9766
+27,	0.9933,	0.9764
+28,	0.9935,	0.9764
+29,	0.9938,	0.9763
+30,	0.9939,	0.9763
+31,	0.9941,	0.9762
+32,	0.9942,	0.9761
+33,	0.9943,	0.9764
+34,	0.9945,	0.9764
+35,	0.9946,	0.9761
+36,	0.9948,	0.9764
+37,	0.9949,	0.9765
+38,	0.995,	0.9768
+39,	0.9951,	0.9766
+40,	0.9952,	0.9763
+41,	0.9952,	0.9764
+42,	0.9953,	0.9763
+43,	0.9953,	0.9761
+44,	0.9954,	0.9762
+45,	0.9955,	0.9764
+46,	0.9956,	0.9764
+47,	0.9956,	0.9762
+48,	0.9957,	0.9761
+49,	0.9957,	0.9763
+\end{filecontents*}
+
+\begin{filecontents*}{alpha_05.csv}
+epoch,	training set,	testing set
+0,	0.9468,	0.9456
+1,	0.9659,	0.9611
+2,	0.9731,	0.9673
+3,	0.9771,	0.9687
+4,	0.98,	0.9695
+5,	0.9819,	0.9703
+6,	0.9831,	0.9711
+7,	0.9844,	0.9716
+8,	0.9854,	0.9718
+9,	0.9863,	0.9717
+10,	0.9873,	0.9714
+11,	0.9881,	0.9717
+12,	0.9886,	0.972
+13,	0.9892,	0.9729
+14,	0.9898,	0.9732
+15,	0.9902,	0.9737
+16,	0.9906,	0.9738
+17,	0.991,	0.9738
+18,	0.9915,	0.974
+19,	0.9917,	0.9738
+20,	0.9919,	0.9741
+21,	0.9922,	0.9741
+22,	0.9926,	0.9742
+23,	0.9929,	0.9742
+24,	0.9932,	0.9741
+25,	0.9934,	0.9738
+26,	0.9936,	0.9743
+27,	0.994,	0.9743
+28,	0.9943,	0.9745
+29,	0.9944,	0.9744
+30,	0.9946,	0.9743
+31,	0.9948,	0.9739
+32,	0.995,	0.9736
+33,	0.9951,	0.9736
+34,	0.9952,	0.9736
+35,	0.9953,	0.9734
+36,	0.9955,	0.9734
+37,	0.9957,	0.9736
+38,	0.9958,	0.9735
+39,	0.9958,	0.9737
+40,	0.9959,	0.9736
+41,	0.996,	0.9737
+42,	0.9961,	0.9738
+43,	0.9962,	0.9737
+44,	0.9963,	0.9738
+45,	0.9964,	0.9739
+46,	0.9964,	0.9736
+47,	0.9965,	0.9735
+48,	0.9966,	0.9734
+49,	0.9967,	0.9734
+\end{filecontents*}
+
+\begin{filecontents*}{examples_15000.csv}
+epoch,	training set,	testing set
+0,	0.9337,	0.9339
+1,	0.9466,	0.9442
+2,	0.9536,	0.9497
+3,	0.9563,	0.9532
+4,	0.9588,	0.954
+5,	0.9603,	0.9552
+6,	0.9618,	0.9553
+7,	0.9634,	0.9572
+8,	0.9639,	0.9577
+9,	0.965,	0.9586
+10,	0.9655,	0.9593
+11,	0.9656,	0.9587
+12,	0.9659,	0.9578
+13,	0.9659,	0.9568
+14,	0.966,	0.9568
+15,	0.9662,	0.9572
+16,	0.966,	0.9566
+17,	0.9656,	0.9576
+18,	0.9655,	0.9571
+19,	0.9653,	0.9571
+20,	0.9653,	0.957
+21,	0.9655,	0.9571
+22,	0.9651,	0.9563
+23,	0.9654,	0.9558
+24,	0.9651,	0.9547
+25,	0.9653,	0.9547
+26,	0.9653,	0.955
+27,	0.9652,	0.9548
+28,	0.965,	0.9543
+29,	0.965,	0.9545
+30,	0.9649,	0.9543
+31,	0.9648,	0.954
+32,	0.9645,	0.954
+33,	0.9642,	0.9519
+34,	0.9642,	0.9539
+35,	0.9641,	0.953
+36,	0.9639,	0.9526
+37,	0.9639,	0.9534
+38,	0.9638,	0.9526
+39,	0.9636,	0.953
+40,	0.9638,	0.953
+41,	0.9637,	0.9529
+42,	0.9638,	0.9528
+43,	0.9634,	0.9527
+44,	0.9636,	0.9522
+45,	0.9631,	0.9521
+46,	0.9631,	0.9523
+47,	0.9631,	0.9522
+48,	0.9629,	0.952
+49,	0.963,	0.9523
+\end{filecontents*}
+
+\begin{filecontents*}{examples_30000.csv}
+epoch,	training set,	testing set
+0,	0.9446,	0.9404
+1,	0.9614,	0.956
+2,	0.967,	0.9615
+3,	0.9707,	0.9634
+4,	0.9731,	0.964
+5,	0.9735,	0.9627
+6,	0.9746,	0.9638
+7,	0.975,	0.9632
+8,	0.9757,	0.9635
+9,	0.9761,	0.9637
+10,	0.9763,	0.964
+11,	0.9767,	0.9643
+12,	0.9767,	0.9624
+13,	0.977,	0.9631
+14,	0.9771,	0.9645
+15,	0.9778,	0.9644
+16,	0.9776,	0.9643
+17,	0.9779,	0.9644
+18,	0.9782,	0.9649
+19,	0.9783,	0.9643
+20,	0.9785,	0.9645
+21,	0.9785,	0.9646
+22,	0.9787,	0.9649
+23,	0.9787,	0.965
+24,	0.979,	0.9657
+25,	0.9789,	0.9651
+26,	0.9791,	0.9647
+27,	0.979,	0.965
+28,	0.979,	0.9645
+29,	0.979,	0.9648
+30,	0.9787,	0.9643
+31,	0.9788,	0.9641
+32,	0.9789,	0.9643
+33,	0.979,	0.9645
+34,	0.9787,	0.9645
+35,	0.9783,	0.9644
+36,	0.9782,	0.9642
+37,	0.9784,	0.9638
+38,	0.9784,	0.9631
+39,	0.9783,	0.9632
+40,	0.9784,	0.9637
+41,	0.9784,	0.9629
+42,	0.9784,	0.9622
+43,	0.9782,	0.9624
+44,	0.9782,	0.9623
+45,	0.9781,	0.9624
+46,	0.9781,	0.9622
+47,	0.9781,	0.9618
+48,	0.9782,	0.9614
+49,	0.978,	0.9612
+
+\end{filecontents*}
+
+
+
+\title{CS 445 \\ HW 2 - Neural Networks}
+\author{Daniel Christiansen}
+\date{02/02/2017}
+
+\begin{document}
+
+\maketitle
+
+\clearpage
+\section{Experiment 1}
+
+\begin{flushleft}
+Varying the number of hidden units clearly has an effect on the accuracy of the neural network.  The more hidden units there were, the higher the accuracy was, on both the training and test data.  The training and test data both had a higher final accuracy the more hidden units there were, and they also converged faster.  More hidden units did seem to show some over-fitting, I think.  For 20 units, the test accuracy continued to increase with the training accuracy, for 50 it flattened out quickly, and for 100 units, it actually decreased as the epochs went on.  The training and test accuracies were only a few percent apart at the end of 50 epochs no matter the number of hidden units, but there's definitely a noticable trend.  The following plots are accuracies for 20, 50, and 100 hidden units, respectively.
+\end{flushleft}
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    xlabel = {epoch},
+    ylabel = {accuracy},
+    legend pos = south east]
+    \addplot table [x=epoch, y=training set, col sep=comma] {hidden_20.csv};
+    \addplot table [x=epoch, y=testing set, col sep=comma] {hidden_20.csv};
+    \legend{training set, test set}
+\end{axis}
+\end{tikzpicture}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    xlabel = {epoch},
+    ylabel = {accuracy},
+    legend pos = south east]
+    \addplot table [x=epoch, y=training set, col sep=comma] {hidden_50.csv};
+    \addplot table [x=epoch, y=testing set, col sep=comma] {hidden_50.csv};
+    \legend{training set, test set}
+\end{axis}
+\end{tikzpicture}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    xlabel = {epoch},
+    ylabel = {accuracy},
+    legend pos = south east]
+    \addplot table [x=epoch, y=training set, col sep=comma] {hidden_100.csv};
+    \addplot table [x=epoch, y=testing set, col sep=comma] {hidden_100.csv};
+    \legend{training set, test set}
+\end{axis}
+\end{tikzpicture}
+\end{figure}
+
+\clearpage
+\section{Experiment 2}
+
+\begin{flushleft}
+Changing the momentum doesn't seem to have as large an impact on the training accuracy as changing the number of hidden units, though it seems to still have some effect.  The higher momentum does seem to take longer to converge, though the accuracy jumps up a bit faster at the beginning.  There doesn't seem to be any overfitting due to the momentum value.  The following plots are for momentum values of 0, 0.25, 0.5, and 0.9, respectively.
+\end{flushleft}
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    xlabel = {epoch},
+    ylabel = {accuracy},
+    legend pos = south east]
+    \addplot table [x=epoch, y=training set, col sep=comma] {alpha_0.csv};
+    \addplot table [x=epoch, y=testing set, col sep=comma] {alpha_0.csv};
+    \legend{training set, test set}
+\end{axis}
+\end{tikzpicture}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    xlabel = {epoch},
+    ylabel = {accuracy},
+    legend pos = south east]
+    \addplot table [x=epoch, y=training set, col sep=comma] {alpha_025.csv};
+    \addplot table [x=epoch, y=testing set, col sep=comma] {alpha_025.csv};
+    \legend{training set, test set}
+\end{axis}
+\end{tikzpicture}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    xlabel = {epoch},
+    ylabel = {accuracy},
+    legend pos = south east]
+    \addplot table [x=epoch, y=training set, col sep=comma] {alpha_05.csv};
+    \addplot table [x=epoch, y=testing set, col sep=comma] {alpha_05.csv};
+    \legend{training set, test set}
+\end{axis}
+\end{tikzpicture}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    xlabel = {epoch},
+    ylabel = {accuracy},
+    legend pos = south east]
+    \addplot table [x=epoch, y=training set, col sep=comma] {hidden_100.csv};
+    \addplot table [x=epoch, y=testing set, col sep=comma] {hidden_100.csv};
+    \legend{training set, test set}
+\end{axis}
+\end{tikzpicture}
+\end{figure}
+
+
+\clearpage
+\section{Experiment 3}
+
+\begin{flushleft}
+When only using a portion of the training data, the neural network wasn't quite as accurate.  When only a quarter of the training set was used, it resulted in the worst accuracy of any of the tests for this assignment.  It is hard to tell if overfitting occured, as there seems to always be a several percent difference in accuracy on the training and test sets, but the test-set accuracy when a smaller training set is used seems to decrease slightly as time goes on, so over-fitting to a narrower range of training examples seems a likely culprit.  The following plots are of 15,000 and 30,000 training examples, respectively.
+\end{flushleft}
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    xlabel = {epoch},
+    ylabel = {accuracy},
+    legend pos = south east]
+    \addplot table [x=epoch, y=training set, col sep=comma] {examples_15000.csv};
+    \addplot table [x=epoch, y=testing set, col sep=comma] {examples_15000.csv};
+    \legend{training set, test set}
+\end{axis}
+\end{tikzpicture}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    xlabel = {epoch},
+    ylabel = {accuracy},
+    legend pos = south east]
+    \addplot table [x=epoch, y=training set, col sep=comma] {examples_30000.csv};
+    \addplot table [x=epoch, y=testing set, col sep=comma] {examples_30000.csv};
+    \legend{training set, test set}
+\end{axis}
+\end{tikzpicture}
+\end{figure}
+
+\end{document}

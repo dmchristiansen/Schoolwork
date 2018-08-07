@@ -1,0 +1,63 @@
+0
+Intel
+Portland, OR
+Programmer Analyst
+Coding
+$1/day
+3
+C++ experience
+C experience
+Verilog experience
+
+1
+TechCo
+Seattle, WA
+Coding guy
+programming stuff
+$20/hour
+2
+stuff
+other stuff
+
+2
+TechCo
+Seattle, WA
+Senior coding guy
+leading a team of coding guys
+$30/hour
+3
+stuff
+leadership
+other stuff
+
+3
+TechCo
+Seattle, WA
+Coding guy
+programming stuff
+$20/hour
+2
+stuff
+more stuff
+
+4
+Google
+San Fransisco, CA
+Programmer Analyst
+Coding
+$30/hour
+3
+C experience
+C++ experience
+Hadoop experience
+
+5
+Microsoft
+Redmond, WA
+Programmer
+Coding
+$25/hour
+2
+.NET experience
+C++ experience
+

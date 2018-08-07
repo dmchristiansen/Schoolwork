@@ -1,0 +1,22 @@
+{C:/Users/Daniel/Desktop/School/PSU/ECE 171/Project 1/BrailleStructural.v} {1 {vlog -work work -stats=none {C:/Users/Daniel/Desktop/School/PSU/ECE 171/Project 1/BrailleStructural.v}
+Model Technology ModelSim PE Student Edition vlog 10.3d Compiler 2014.10 Oct  7 2014
+-- Compiling module BrailleDisplay
+
+Top level modules:
+	BrailleDisplay
+
+} {} {}} {C:/Users/Daniel/Desktop/School/PSU/ECE 171/Project 1/BrailleDataFlow.v} {1 {vlog -work work -stats=none {C:/Users/Daniel/Desktop/School/PSU/ECE 171/Project 1/BrailleDataFlow.v}
+Model Technology ModelSim PE Student Edition vlog 10.3d Compiler 2014.10 Oct  7 2014
+-- Compiling module BrailleDisplay
+
+Top level modules:
+	BrailleDisplay
+
+} {} {}} {C:/Users/Daniel/Desktop/School/PSU/ECE 171/Project 1/BrailleTest.v} {1 {vlog -work work -stats=none {C:/Users/Daniel/Desktop/School/PSU/ECE 171/Project 1/BrailleTest.v}
+Model Technology ModelSim PE Student Edition vlog 10.3d Compiler 2014.10 Oct  7 2014
+-- Compiling module DisplayTest
+
+Top level modules:
+	DisplayTest
+
+} {} {}}

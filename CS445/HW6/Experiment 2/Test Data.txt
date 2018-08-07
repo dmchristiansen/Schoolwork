@@ -1,0 +1,15 @@
+eta = 0.1
+test average reward: 218.9774
+test standard deviation: 93.75843263
+
+eta = 0.5
+test average reward: 186.5814
+test standard deviation: 89.5464537212
+
+eta = 0.75
+test average reward: 111.4602
+test standard deviation: 67.5454633263
+
+eta = 1
+test average reward: 65.758
+test standard deviation: 86.5772385561

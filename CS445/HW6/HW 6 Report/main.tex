@@ -1,0 +1,129 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+
+
+\title{CS 445 \\ HW 6 - Reinforcement Learning}
+\author{Daniel Christiansen}
+\date{03/016/2017}
+
+\begin{document}
+
+\maketitle
+
+\clearpage
+\section{Experiment 1}
+
+
+\begin{flushleft}
+The goal of this homework was to implement an example of reinforcement learning.  We were to simulate a trash-gathering robot moving around on a 10 x 10 grid of tiles, picking up discarded cans.  To do this, we needed to implement a Q-learning algorithm, where the 'robot' used it's current state, as represented by its sensor readings, to decide which action to take next.  The training of this robot involved taking actions, receiving a reward, and updating a matrix of expected reward values based on the state it was in and the action it took, and the perceived value of the best action it could take from its new state.  The training and testing each consisted of 5,000 episodes, each episode consisting of a newly randomized grid of cans to pick up, and 200 steps (take action, get reward, update sensors, update Q-matrix) taken in that grid.
+\end{flushleft}
+
+\begin{flushleft}
+The equation for updating the matrix is
+\end{flushleft}
+$Q(s, a) \Leftarrow Q(s, a) + \eta (r + \gamma max_{a'} Q(s', a') - Q(s, a))$
+\begin{flushleft}
+where $\eta$ is the learning rate, and $\gamma$ is the discount rate, representing how much the robot values future reward versus immediate reward.  During training, the robot takes random actions with probability $\epsilon$, and chooses the best action (based on the current Q matrix) with probability $1 - \epsilon$.  $\epsilon$ decreases by $0.01$ every 50 episodes.  The following plot show the total reward per episode over 5,000 episodes, plotting every 100th value.
+\end{flushleft}
+
+\clearpage
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"Experiment 1/training reward 0_2".png}
+\end{figure}
+
+\begin{flushleft}
+For the testing phase, the average total reward per episode was $130.02$, and the standard deviation was $122.09$.
+\end{flushleft}
+
+
+\clearpage
+\section{Experiment 2}
+
+\begin{flushleft}
+In the second experiment, we were to test several different learning rates.  The values that I chose were $\eta = 0.1, 0.5, 0.75, 1$.  As can be seen in the plots below, the robot performed worse as the learning rate increased.  I assume that this is caused by a larger learning rate 'forgetting' past events, and valuing more recent results too heavily.  
+\end{flushleft}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"Experiment 2/training reward eta 0_1".png}
+    \center{$\eta$ = 0.1, test average reward: 218.98, test standard deviation: 93.76}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"Experiment 2/training reward eta 0_5".png}
+    \center{$\eta$ = 0.5, test average reward: 186.58, test standard deviation: 89.55}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"Experiment 2/training reward eta 0_75".png}
+    \center{$\eta$ = 0.75, test average reward: 111.46, test standard deviation: 67.55}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"Experiment 2/training reward eta 1".png}
+    \center{$\eta$ = 1, test average reward: 65.76, test standard deviation: 86.58}
+\end{figure}
+
+
+\clearpage
+\section{Experiment 3}
+
+\begin{flushleft}
+In the third experiment, we were to use a constant value of $\epsilon$ for the duration of the run.  I chose $\epsilon = 0.1, 0.5, 0.75$.  The robot performs worse the higher $\epsilon$ gets, though in general it performs poorer than with an $\epsilon$ that decreases over the training run.  I assume that this is caused by the robot not exploring the possible state/action space enough with a low $\epsilon$ value, and not valuing the learned values in the Q matrix enough with a high $\epsilon$ value.
+\end{flushleft}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"Experiment 3/training reward epsilon 0_1".png}
+    \center{$\epsilon$ = 0.1, test average reward: 183.28, test standard deviation: 81.07}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"Experiment 3/training reward epsilon 0_5".png}
+    \center{$\epsilon$ = 0.5, test average reward: 159.53, test standard deviation: 91.76}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"Experiment 3/training reward epsilon 0_75".png}
+    \center{$\epsilon$ = 0.75, test average reward: 134.90, test standard deviation: 58.56}
+\end{figure}
+
+
+\clearpage
+\section{Experiment 4}
+
+\begin{flushleft}
+In the fourth experiment, we were to impose a -0.5 reward on top of existing reward values.  This meant that moving acrried a penalty.  I assume that this would incentivize always trying to pick up the nearest can.  Though, with such a limited sensor range, the robot is already doing that, and can't see enough of the room to find some optimal path or more efficient way of traversing the room.  The plot of training rewards seems to have the same general shape as that from the first experiment, only with lower reward values brought on by the action penalty.  In a scenario where the robot could perceive more of its surroundings, or its goal task was a traversal problem, I think this would have a positive impact.  
+\end{flushleft}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"Experiment 4/training reward action tax".png}
+    \center{test average reward: 101.40, test standard deviation: 85.11}
+\end{figure}
+
+
+\clearpage
+\section{Experiment 5}
+
+\begin{flushleft}
+In the fifth experiment, we were to devise our own experiment.  I chose to alter the sensors and actions available to the robot.  The actions it could perform were: attempt to pick up a can, turn left, turn right, or move forward.  In addition, the robot's sensors were modified to show the square it occupied, those to either side, the square in front of it, and those diagonally forward-left and forward-right.  I was interested to see if altering how it moved around would change its efficiency.  I ran through the experiment several times, and the result was about the same every time.  It seems to do much better than in previous experiments.  I'm not sure why, though.  Perhaps the narrower range of actions caused to to take the optimal action more often?  The following plot shows the results.
+\end{flushleft}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"Experiment 5/training reward new functionality".png}
+    \center{test average reward: 401.93, test standard deviation: 67.82}
+\end{figure}
+
+\clearpage
+\begin{flushleft}
+I decided to do a second alteration of the experiment, and change the robot so that it moves as normal, but has sensor information from two spaces in the cardinal directions, and one space away diagonally.  It did better than with the standard sensor range, but not as well as the last modification I made.  It makes sense that it would do better with an expanded sensor range.  I can imagine a scenario in which the robot is surrounded by empty squares after most of the cans have been picked up, and it is relying on random chance to guide it.  A larger sensor range would reduce the likelihood of this happening. 
+\end{flushleft}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"Experiment 5/training reward better sensors".png}
+    \center{test average reward: 298.98, test standard deviation: 112.65}
+\end{figure}
+
+
+
+\end{document}

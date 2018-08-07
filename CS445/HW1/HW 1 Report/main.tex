@@ -1,0 +1,214 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplotstable}
+\usepackage{pgfplots}
+\usepackage{filecontents}
+\pagestyle{empty}
+
+\begin{filecontents*}{data001.csv}
+epoch, training set, testing set
+0, 0.8189, 0.8459
+1, 0.8491, 0.8394
+2, 0.8532, 0.8335
+3, 0.8543, 0.8599
+4, 0.8566, 0.8402
+5, 0.8566, 0.8619
+\end{filecontents*}
+
+\begin{filecontents*}{data01.csv}
+epoch, training set, testing set
+0,	0.1076,	0.108
+1,	0.8454,	0.843
+2,	0.8178,	0.8106
+3,	0.823,	0.8228
+4,	0.8245,	0.822
+\end{filecontents*}
+
+\begin{filecontents*}{data1.csv}
+epoch, training set, testing set
+0,	0.8249,	0.8292
+1,	0.8467,	0.81
+2,	0.851,	0.7903
+3,	0.8512,	0.847
+4,	0.8524,	0.824
+5,	0.8536,	0.8423
+6,	0.8539,	0.8243
+7,	0.8562,	0.8489
+8,	0.8567,	0.8276
+9,	0.857,	0.8223
+10,	0.8562,	0.8189
+11,	0.8567,	0.7807
+12,	0.8575,	0.8421
+13,	0.857,	0.8407
+14,	0.8573,	0.8387
+15,	0.8589,	0.7852
+16,	0.8567,	0.8301
+17,	0.8595,	0.8632
+18,	0.8603,	0.8304
+19,	0.8595,	0.8308
+20,	0.8582,	0.8462
+21,	0.8611,	0.841
+22,	0.8609,	0.8477
+23,	0.8609,	0.8512
+\end{filecontents*}
+
+\title{CS 445 \\ HW 1 - Perceptrons}
+\author{Daniel Christiansen}
+\date{01/24/2017}
+
+\begin{document}
+
+\maketitle
+\clearpage
+
+\begin{flushleft}
+For this first assignment, we were to implement a simple perceptron network to recognize hand-written digits, using the mnist data sets.  Each training example was a 28 x 28 grid of grey-scale values.  Each of these 784 values was used as an input to ten classifiers, one for each digit.  We were to train the perceptron network using stochastic gradient descent using three different values for $\eta$, the step size.  After each epoch, we were to test the accuracy on both the training and test data sets, and plot those values.  The various values of eta gave slightly different behavior in how fast the accuracy converged.  In general, my perceptron network seemed to cap out at an accuracy of around 0.86.  When $\eta$ was 0.001, it slowly converged, but generally only got more accurate.  The largest value of $\eta$, 0.1, seemed to oscillate around 0.86, slowly settling down.  I ran through the training process several times for each value, and the random initial weights seem to make much more of a difference on the larger values of $\eta$.  The behavior when $\eta$ = 0.001 was fairly consistent, but when $\eta$ = 0.1, sometimes it settled down in four or five epochs, and a few times it took twenty or more.
+\end{flushleft}
+
+
+\begin{flushleft}
+The following figures show the accuracy plots and confusion matrices of a run through the test set after training for the various values of $\eta$.  I did multiple runs for each value of $\eta$.  I've chosen examples that are characteristic of the behavior I saw.
+\end{flushleft}
+
+\clearpage
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    xlabel = {epoch [$\eta$ = 0.001]},
+    ylabel = {accuracy},
+    legend pos = south east]
+    \addplot table [x=epoch, y=training set, col sep=comma] {data001.csv};
+    \addplot table [x=epoch, y=testing set, col sep=comma] {data001.csv};
+    \legend{training set, test set}
+\end{axis}
+\end{tikzpicture}
+\end{figure}
+
+\begin{table}[h!]
+    \begin{center}
+        \centerline\textbf{{Confusion matrix - $\eta$ = 0.001}}
+        \begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c |}
+            \hline
+              & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\ 
+            \hline
+            0 & 938 & 0 & 3 & 1 & 1 & 9 & 14 & 6 & 8 & 0 \\  
+            \hline
+            1 & 0 & 1092 & 2 & 3 & 1 & 1 & 4 & 1 & 31 & 0 \\
+            \hline
+            2 & 3 & 30 & 820 & 44 & 5 & 13 & 47 & 14 & 53 & 3 \\
+            \hline
+            3 & 7 & 3 & 26 & 856 & 1 & 46 & 8 & 28 & 20 & 15 \\
+            \hline
+            4 & 4 & 5 & 4 & 2 & 759 & 3 & 34 & 9 & 32 & 130 \\
+            \hline
+            5 & 8 & 4 & 5 & 41 & 9 & 678 & 31 & 13 & 75 & 28 \\
+            \hline
+            6 & 8 & 2 & 4 & 0 & 0 & 23 & 917 & 1 & 3 & 0 \\
+            \hline
+            7 & 1 & 14 & 16 & 5 & 4 & 2 & 2 & 928 & 16 & 40 \\
+            \hline
+            8 & 8 & 12 & 7 & 50 & 13 & 21 & 28 & 10 & 798 & 27 \\
+            \hline
+            9 & 6 & 5 & 4 & 8 & 11 & 9 & 2 & 54 & 32 & 878 \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\clearpage
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    xlabel = {epoch [$\eta$ = 0.01]},
+    ylabel = {accuracy},
+    legend pos = south east]
+    \addplot table [x=epoch, y=training set, col sep=comma] {data01.csv};
+    \addplot table [x=epoch, y=testing set, col sep=comma] {data01.csv};
+    \legend{training set, test set}
+\end{axis}
+\end{tikzpicture}
+\end{figure}
+
+\begin{table}[h!]
+    \begin{center}
+        \centerline\textbf{{Confusion matrix - $\eta$ = 0.01}}
+        \begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c |}
+            \hline
+              & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\ 
+            \hline
+            0 & 972	& 1	& 0	& 0	& 0	& 0	& 2	& 2	& 2	& 1 \\
+            \hline
+            1 & 1	& 1111	& 2	& 1	& 0	& 1	& 7	& 0	& 12 & 0 \\
+            \hline
+            2 & 53 & 69 & 696 & 56 & 0 & 1 & 72 & 5 & 77 & 3 \\
+            \hline
+            3 & 34 & 6 & 21 & 887 & 1 & 4 & 25 & 14 & 16 & 2 \\ 
+            \hline
+            4 & 20 & 4 & 15 & 6 & 673 & 0 & 104 & 10 & 40 & 110 \\
+            \hline
+            5 & 45 & 5 & 8 & 113 & 10 & 504 & 83 & 13 & 99 & 12 \\
+            \hline
+            6 & 20 & 4 & 4 & 0 & 1 & 3 & 924 & 1 & 1 & 0 \\
+            \hline
+            7 & 15 & 13 & 13 & 13 & 3 & 0 & 6 & 916 & 24 & 2 \\
+            \hline
+            8 & 18 & 22 & 9 & 103 & 8 & 3 & 52 & 2 & 749 & 8 \\
+            \hline
+            9 & 19 & 12 & 7 & 42 & 6 & 1 & 10 & 67 & 57 & 788 \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\clearpage
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    xlabel = {epoch [$\eta$ = 0.1]},
+    ylabel = {accuracy},
+    legend pos = south east]
+    \addplot table [x=epoch, y=training set, col sep=comma] {data1.csv};
+    \addplot table [x=epoch, y=testing set, col sep=comma] {data1.csv};
+    \legend{training set, test set}
+\end{axis}
+\end{tikzpicture}
+\end{figure}
+
+\begin{table}[h!]
+    \begin{center}
+        \centerline\textbf{{Confusion matrix - $\eta$ = 0.1}}
+        \begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c |}
+            \hline
+              & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\ 
+            \hline
+            0 & 932 & 0 & 5 & 2 & 0 & 6 & 15 & 3 & 16 & 1 \\
+            \hline
+            1 & 0 & 1103 & 2 & 2 & 0 & 2 & 4 & 1 & 21 & 0 \\
+            \hline
+            2 & 7 & 35 & 731 & 97 & 3 & 16 & 36 & 12 & 91 & 4 \\
+            \hline
+            3 & 5 & 2 & 14 & 885 & 0 & 37 & 6 & 19 & 26 & 16 \\
+            \hline
+            4 & 2 & 5 & 12 & 2 & 696 & 1 & 31 & 7 & 38 & 188 \\
+            \hline
+            5 & 8 & 2 & 11 & 42 & 7 & 651 & 32 & 17 & 92 & 30 \\
+            \hline
+            6 & 5 & 3 & 1 & 1 & 1 & 17 & 918 & 2 & 10 & 0 \\
+            \hline
+            7 & 1 & 11 & 18 & 9 & 5 & 1 & 1 & 858 & 32 & 92 \\
+            \hline
+            8 & 5 & 24 & 14 & 25 & 10 & 20 & 18 & 3 & 811 & 44 \\
+            \hline
+            9 & 5 & 7 & 3 & 10 & 5 & 2 & 2 & 31 & 17 & 927 \\
+            \hline
+         \end{tabular}
+    \end{center}
+\end{table}
+
+\end{document}

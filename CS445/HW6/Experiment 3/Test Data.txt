@@ -1,0 +1,12 @@
+epsilon = 0.1
+test average reward: 183.2824
+test standard deviation: 81.0704770569
+
+epsilon = 0.5
+test average reward: 159.5342
+test standard deviation: 91.7573737111
+
+epsilon = 0.75
+test average reward: 134.8974
+test standard deviation: 58.5619199928
+

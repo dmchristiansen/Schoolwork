@@ -1,0 +1,212 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+
+
+\title{CS 445 \\ HW 5 - K Means Clustering}
+\author{Daniel Christiansen}
+\date{03/03/2017}
+
+\begin{document}
+
+\maketitle
+
+\clearpage
+\section{Experiment 1}
+
+\begin{flushleft}
+For the first experiment, there were originally ten clusters.  The average mean-square-error was 677, the mean-square-separation was 1277.28, and the accuracy was 0.738.  On the run that I used, there was one empty cluster at the end, leaving no classifier for nine.
+\end{flushleft}
+
+\begin{flushleft}
+This classifier was one of the less accurate ones that we've implemented in the homework.  It's accuracy is mostly effected by the fact that it didn't have a way to identify all the digits.  Also, it confused a lot of nines for threes and ones for eights.  I would have guessed other pairs of digits would have been more common, but those pairs were also confused a lot on other runs.  Other than that, it did very well.  The visualizations of the final centroid vectors look a lot like the digit that they're predicting, but a lot blurrier.  The confusion matrix and centroid visualizations follow.
+\end{flushleft}
+
+\clearpage
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"10/confusion matrix 10 clusters".png}
+\end{figure}
+
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"10/centroid visualization 0 of 9".png}
+\end{figure}
+
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"10/centroid visualization 1 of 9".png}
+\end{figure}
+
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"10/centroid visualization 2 of 9".png}
+\end{figure}
+
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"10/centroid visualization 3 of 9".png}
+\end{figure}
+
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"10/centroid visualization 4 of 9".png}
+\end{figure}
+
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"10/centroid visualization 5 of 9".png}
+\end{figure}
+
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"10/centroid visualization 6 of 9".png}
+\end{figure}
+
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"10/centroid visualization 7 of 9".png}
+\end{figure}
+
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"10/centroid visualization 8 of 9".png}
+\end{figure}
+
+
+\clearpage
+\section{Experiment 2}
+
+\begin{flushleft}
+For the second experiment, there were originally thirty clusters.  Th average mean-square-error was 531, the mean-square-separation was 1495.59, and the accuracy was 0.863.  At the end there were 20 non-empty clusters.  There was at least one centroid associated with each digit.
+\end{flushleft}
+
+\begin{flushleft}
+The accuracy with thirty initial cluster was much better than with ten, which is to be expected.  The ten centroids that weren't associated with any digits at the end look like static.  A lot of them have dark pixels along the sides of the image, which the digits generally don't.  The confusion matrix and centroid visualizations follow.  The centroids not associated with any digit are still labeled with 'class 0'. 
+\end{flushleft}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"30/confusion matrix 30 clusters".png}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"30/centroid visualization 0 of 30".png}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"30/centroid visualization 1 of 30".png}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"30/centroid visualization 2 of 30".png}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"30/centroid visualization 3 of 30".png}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"30/centroid visualization 4 of 30".png}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"30/centroid visualization 5 of 30".png}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"30/centroid visualization 6 of 30".png}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"30/centroid visualization 7 of 30".png}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"30/centroid visualization 8 of 30".png}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"30/centroid visualization 9 of 30".png}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"30/centroid visualization 10 of 30".png}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"30/centroid visualization 11 of 30".png}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"30/centroid visualization 12 of 30".png}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"30/centroid visualization 13 of 30".png}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"30/centroid visualization 14 of 30".png}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"30/centroid visualization 15 of 30".png}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"30/centroid visualization 16 of 30".png}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"30/centroid visualization 17 of 30".png}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"30/centroid visualization 18 of 30".png}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"30/centroid visualization 19 of 30".png}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"30/centroid visualization 20 of 30".png}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"30/centroid visualization 21 of 30".png}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"30/centroid visualization 22 of 30".png}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"30/centroid visualization 23 of 30".png}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"30/centroid visualization 24 of 30".png}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"30/centroid visualization 25 of 30".png}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"30/centroid visualization 26 of 30".png}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"30/centroid visualization 27 of 30".png}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"30/centroid visualization 28 of 30".png}
+\end{figure}
+
+\begin{figure}[h!]
+    \noindent\includegraphics[width=\linewidth]{"30/centroid visualization 29 of 30".png}
+\end{figure}
+
+\end{document}
